@@ -79,6 +79,7 @@
 
             <div class="content">
                 @yield('content')
+                @yield('menu')
             </div>
         </div>
     </body>
