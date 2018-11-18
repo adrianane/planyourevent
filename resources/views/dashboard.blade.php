@@ -1,6 +1,6 @@
 @extends('layouts.main')
-@extends('partials.menu')
 
+@section('title','My dashboard')
 @section('content')
 
     <div class="title m-b-md">

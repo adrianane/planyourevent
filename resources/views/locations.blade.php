@@ -1,7 +1,6 @@
 @extends('layouts.main')
-@extends('partials.menu')
 
-
+@section('title','Locations')
 @section('content')
     <div class="title m-b-md">
     Get your event location!
