@@ -15,6 +15,7 @@
             <li><a href="/video/">Video</a></li>
             <li><a href="/locations/">Locations</a></li>
             <li><a href="/dashboard/">My dashboard</a></li>
+            <li><a href="/posts/">Blog</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

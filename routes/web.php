@@ -20,3 +20,5 @@ Route::get('/foto', 'PagesController@foto');
 Route::get('/video', 'PagesController@video');
 
 Route::get('/locations', 'PagesController@locations');
+
+Route::resource('posts', 'PostsController');
