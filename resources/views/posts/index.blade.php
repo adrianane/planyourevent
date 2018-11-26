@@ -14,5 +14,8 @@
     @else
     <h2>No posts found!</h2>
     @endif
-    
+    <br />
+    <h1>
+        Click <a href="posts/create">here</a> to create your post.
+    </h1>
 @endsection
