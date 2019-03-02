@@ -21,4 +21,5 @@ Route::get('/video', 'PagesController@video');
 
 Route::get('/locations', 'PagesController@locations');
 
+//create routes automatically
 Route::resource('posts', 'PostsController');
