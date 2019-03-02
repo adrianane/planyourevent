@@ -8,7 +8,8 @@
     <a href="posts/{{$post->id}}">
         <h2>{{$post->title}}</h2>
         <div>{{$post->body}}</div>
-        </a>
+    </a>
+    <a href="posts/{{$post->id}}/edit"> Edit </a>
     @endforeach
     {{$posts->links()}}
     @else
