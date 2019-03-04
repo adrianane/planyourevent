@@ -3,7 +3,8 @@
 @section('title','Edit Post')
 @section('content')
     <form method="POST" action="/posts/{{$post->id}}">
-    {{ csrf_field() }}
+    <input type="hidden" name="_method" value="PUT">
+        {{ csrf_field() }}
         <div class="form-group">
             <label>Post</label>
             <input type="text" class="form-control" name="title" value="{{$post->title}}">
