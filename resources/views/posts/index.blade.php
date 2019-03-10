@@ -9,7 +9,14 @@
         <h2>{{$post->title}}</h2>
         <div>{{$post->body}}</div>
     </a>
-    <a href="posts/{{$post->id}}/edit"> Edit </a>
+    <a href="posts/{{$post->id}}/edit" class="btn"> Edit </a>
+
+    <form method="POST" action="/posts/{{$post->id}}">
+        <input type="hidden" name="_method" value="DELETE">
+        {{ csrf_field() }}
+        
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
     @endforeach
     {{$posts->links()}}
     @else
