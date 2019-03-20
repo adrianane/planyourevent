@@ -23,3 +23,6 @@ Route::get('/locations', 'PagesController@locations');
 
 //create routes automatically
 Route::resource('posts', 'PostsController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
