@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="title m-b-md">
-    Plan your event!**
+    Plan your event!
 </div>
 @endsection
