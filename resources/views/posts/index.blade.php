@@ -8,6 +8,9 @@
     <a href="posts/{{$post->id}}">
         <h2>{{$post->title}}</h2>
         <div>{{$post->body}}</div>
+        Created by <small>{{$post->user->name}}</small>
+        <br/>
+
     </a>
     <a href="posts/{{$post->id}}/edit" class="btn"> Edit </a>
 

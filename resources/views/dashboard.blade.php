@@ -15,10 +15,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     You are logged in!
                 </div>
             </div>
+            <a href="posts/create" class="btn btn-primary">Create post</a>
+            @if(count($posts) > 0)
+                <h2>Your posts:</h2>
+                <ul>
+                    @foreach($posts as $post)
+                    <li>
+                        {{$post->title}} <br/>
+                        {{$post->body}} <br/>
+                        created by {{$post->user->name}}
+                    </li>
+                    @endforeach
+                </ul>
+            @else
+                <p>You have no posts!</p>
+            @endif
         </div>
     </div>
 </div>
