@@ -12,14 +12,18 @@
         <br/>
 
     </a>
-    <a href="posts/{{$post->id}}/edit" class="btn"> Edit </a>
+    @if(Auth::user())
+        @if(Auth::user()->id == $post->user->id)
+        <a href="posts/{{$post->id}}/edit" class="btn"> Edit </a>
+        <form method="POST" action="/posts/{{$post->id}}">
+            <input type="hidden" name="_method" value="DELETE">
+            {{ csrf_field() }}
+            
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        @endif
+    @endif
 
-    <form method="POST" action="/posts/{{$post->id}}">
-        <input type="hidden" name="_method" value="DELETE">
-        {{ csrf_field() }}
-        
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
     @endforeach
     {{$posts->links()}}
     @else

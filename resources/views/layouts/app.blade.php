@@ -52,6 +52,9 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="/dashboard/">My dashboard</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
