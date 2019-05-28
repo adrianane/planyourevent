@@ -23,6 +23,7 @@ Route::get('/locations', 'PagesController@locations');
 
 //create routes automatically
 Route::resource('posts', 'PostsController');
+Route::resource('locations', 'LocationsController');
 
 Auth::routes(['verify' => true]);
 
