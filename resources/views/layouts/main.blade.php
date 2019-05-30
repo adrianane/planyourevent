@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-static-top">
@@ -80,6 +81,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-
+    
+    <!--@TODO: include separate js file-->
+    <script>
+        CKEDITOR.replace('description');
+        // $('textarea').ckeditor();
+        // $('.textarea').ckeditor(); // if class is prefered.
+    </script>
     </body>
 </html>
