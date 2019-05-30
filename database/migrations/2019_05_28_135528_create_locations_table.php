@@ -24,11 +24,11 @@ class CreateLocationsTable extends Migration
             $table->integer('zip');
             $table->string('email');
             $table->string('phone', 15);
-            $table->string('web');
-            $table->string('fb');
-            $table->string('twitter');
-            $table->string('pinterest');
-            $table->string('description');
+            $table->string('web')->nullable();
+            $table->string('fb')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('pinterest')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
