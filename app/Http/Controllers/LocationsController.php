@@ -106,7 +106,10 @@ class LocationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $currentLocation = Location::find($id);
+
+        return view('locations.show')->with('location', $currentLocation);
+        
     }
 
     /**
