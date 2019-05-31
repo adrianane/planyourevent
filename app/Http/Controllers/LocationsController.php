@@ -38,6 +38,7 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
             'name' => 'required',
             'street' => 'required',
@@ -45,7 +46,8 @@ class LocationsController extends Controller
             'city' => 'required',
             'zip' => 'required',
             'phone' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'img.*' => 'image|nullable|max:1999'
         ]);
 
         $location = new Location();
@@ -63,8 +65,34 @@ class LocationsController extends Controller
         $location->twitter = $request->twitter;
         $location->pinterest = $request->pinterest;
         $location->description = $request->description;
-        //@TODO: save images
-        //$location->fotos = $request->fotos; 
+        //handle images and save
+        $filenameToStoreArray = [];
+        if ($request->hasFile('img')) {
+            foreach($request->file('img') as $image)
+            {
+                //get filename with ext
+                $fileNameWithExt = $image->getClientOriginalName();
+
+                //get just filename
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+                //get just extension
+                $fileExt = pathinfo($fileNameWithExt, PATHINFO_EXTENSION);
+
+                //filename to store
+                $filenameToStore = $fileName . '_' . time() . '.' . $fileExt;
+
+                //upload image
+                //@TODO: create folders according to the user id
+                $path = $image->storeAs('public/user/', $filenameToStore);
+                $filenameToStoreArray[] = 'public/user/' . $filenameToStore;
+            }
+        } else {
+            $filenameToStoreArray[] = 'noImage.jpg';
+        } 
+        //save path of image as json
+        $location->img = json_encode($filenameToStoreArray);
+
         $location->save();
 
         return redirect('/locations')->with('Location added!');

@@ -3,7 +3,7 @@
 @section('title','Posts')
 @section('content')
     <h3>Add your special location:</h3>
-    <form method="POST" action="/locations">
+    <form method="POST" action="/locations" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-sm-6">
             <div class="form-group">
@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label>Upload images</label>
-                <input type="file" name="fotos" multiple>
+                <input type="file" name="img[]" multiple>
             </div>
             <div class="form-group">
                 <label>Facilities/Description</label>
