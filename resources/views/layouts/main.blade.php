@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('css/lightbox.css')}}">
         <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     </head>
     <body>
@@ -82,11 +83,10 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     
-    <!--@TODO: include separate js file-->
+    <!--@TODO: include separate js file and merge it into app.js-->
     <script>
         CKEDITOR.replace('description');
-        // $('textarea').ckeditor();
-        // $('.textarea').ckeditor(); // if class is prefered.
     </script>
+    <script src="{{asset('js/lightbox.js')}}"></script>
     </body>
 </html>

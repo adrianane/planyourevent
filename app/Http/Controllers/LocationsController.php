@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Location;
+use App\LocationsImages;
 
 class LocationsController extends Controller
 {
@@ -65,8 +66,11 @@ class LocationsController extends Controller
         $location->twitter = $request->twitter;
         $location->pinterest = $request->pinterest;
         $location->description = $request->description;
+        $location->img = count($request->file('img'));
+        $location->save();
+
         //handle images and save
-        $filenameToStoreArray = [];
+    
         if ($request->hasFile('img')) {
             foreach($request->file('img') as $image)
             {
@@ -85,15 +89,14 @@ class LocationsController extends Controller
                 //upload image
                 //@TODO: create folders according to the user id
                 $path = $image->storeAs('public/user/', $filenameToStore);
-                $filenameToStoreArray[] = 'public/user/' . $filenameToStore;
-            }
-        } else {
-            $filenameToStoreArray[] = 'noImage.jpg';
-        } 
-        //save path of image as json
-        $location->img = json_encode($filenameToStoreArray);
 
-        $location->save();
+                //save location's images
+                $locationImage = new LocationsImages([
+                    'path' => $filenameToStore
+                ]);
+                $location->locationImages()->save($locationImage);
+            }
+        }
 
         return redirect('/locations')->with('Location added!');
     }
