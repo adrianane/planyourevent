@@ -28,7 +28,7 @@ class CreateLocationsTable extends Migration
             $table->string('fb')->nullable();
             $table->string('twitter')->nullable();
             $table->string('pinterest')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description', 1000)->nullable();
             $table->string('img')->nullable();
             $table->timestamps();
         });

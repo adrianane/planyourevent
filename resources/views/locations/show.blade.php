@@ -2,16 +2,22 @@
 
 @section('title','Posts')
 @section('content')
-    <h1>Locations</h1>
     @if($location)
         <h2>{{$location->name}}</h2>
-        <p>{{$location->street}}, {{$location->nr}}</p>
         <p>{{$location->city}}, {{$location->district}}</p>
         {!!$location->description!!}
         @if($location->img)
-        var_dump({{$location->img}});
-                <a href="$img" data-lightbox="roadtrip">Image #1</a>
-                <a href="$img" data-lightbox="roadtrip">Image #2</a>
+        <div class="container">
+            <div class="row">
+                @foreach ($location->locationImages as $img)
+                    <div class="col-sm-3">
+                        <a href="/storage/user/{{$img->path}}" data-lightbox="roadtrip">
+                            <img src="/storage/user/{{$img->path}}" class="img-thumbnail">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
         @endif
         <br/>
     @endif
