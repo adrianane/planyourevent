@@ -66,7 +66,10 @@ class LocationsController extends Controller
         $location->twitter = $request->twitter;
         $location->pinterest = $request->pinterest;
         $location->description = $request->description;
-        $location->img = count($request->file('img'));
+        if($request->file('img')) {
+            $location->img = count($request->file('img'));
+        }
+        $location->user_id = auth()->user()->id;
         $location->save();
 
         //handle images and save

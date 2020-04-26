@@ -66,9 +66,17 @@
             </div>
             <div class="form-group">
                 <label>Facilities/Description</label>
-                <textarea name="description" class="form-control" rows="3" value="{{old('description')}}"></textarea>
+                <textarea id ="description" name="description" class="form-control" rows="3" value="{{old('description')}}"></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+    <!-- call ckeditor 5 for the description field -->
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#description' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection
