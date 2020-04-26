@@ -13,7 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
         <link rel="stylesheet" href="{{asset('css/lightbox.css')}}">
-        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <!--ckeditor version 5-->
+        <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-static-top">
@@ -82,11 +83,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    
     <!--@TODO: include separate js file and merge it into app.js-->
-    <script>
-        CKEDITOR.replace('description');
-    </script>
     <script src="{{asset('js/lightbox.js')}}"></script>
     </body>
 </html>
