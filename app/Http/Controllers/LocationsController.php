@@ -126,7 +126,10 @@ class LocationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        //get location by id
+        $location = Location::find($id);
+
+        return view('locations.edit')->with('location', $location);
     }
 
     /**
@@ -138,7 +141,40 @@ class LocationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate data
+        $this->validate($request, [
+            'name' => 'required',
+            'street' => 'required',
+            'nr' => 'required',
+            'city' => 'required',
+            'zip' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            //'img.*' => 'image|nullable|max:1999'
+        ]);
+
+        //save updated data
+        $location = Location::find($id);
+        $location->name = $request->name;
+        $location->street = $request->street;
+        $location->nr = $request->nr;
+        $location->city = $request->city;
+        $location->zip = $request->zip;
+        $location->phone = $request->phone;
+        $location->email = $request->email;
+        $location->fb = $request->fb;
+        $location->twitter = $request->twitter;
+        $location->pinterest = $request->pinterest;
+        $location->description = $request->description;
+
+        //@todo: save the new image
+
+        //save data
+        $location->save();
+
+        //redirect to the list page
+
+        return redirect('/locations')->with('The location was successfully edited!');
     }
 
     /**

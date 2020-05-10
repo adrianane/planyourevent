@@ -11,6 +11,7 @@
             <p>{{$location->city}}, {{$location->district}}</p>
             <br/>
         </a>
+        <a href="locations/{{$location->id}}/edit" class="btn">Edit</a>
         @endforeach
     @else
         <h2>No location found!</h2>
