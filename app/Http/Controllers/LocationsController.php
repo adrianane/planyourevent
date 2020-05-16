@@ -8,6 +8,12 @@ use App\LocationsImages;
 
 class LocationsController extends Controller
 {
+    public function __construct()
+    {
+        //limit access to all actions, except index and show; the user has to be logged in for editing, deleting
+        $this->middleware(['auth', 'verified'], ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -174,7 +180,7 @@ class LocationsController extends Controller
 
         //redirect to the list page
 
-        return redirect('/locations')->with('The location was successfully edited!');
+        return redirect('/locations')->with('success', 'The location was successfully edited!');
     }
 
     /**
@@ -185,6 +191,14 @@ class LocationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $location = Location::find($id);
+
+        if(auth()->user()->getAuthIdentifier() !== $location->user_id) {
+            return redirect('/locations')->with('error', 'Unauthorized page!');
+        } else {
+            $location->delete();
+        }
+
+        return redirect('/locations')->with('success', 'Location deleted!');
     }
 }
