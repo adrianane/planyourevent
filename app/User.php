@@ -34,4 +34,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Post');
     }
+
+    //create relation:  auser has many locations
+    //this method can be accessed as properties on the model: User::find($user_id)->locations
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
 }

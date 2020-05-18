@@ -19,4 +19,10 @@ class Location extends Model
         return $this->hasMany('App\LocationsImages');
     }
 
+    //create the following relation: a single location belongs to one user
+    //the method can be used as a property: {{$location->user->name}}
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

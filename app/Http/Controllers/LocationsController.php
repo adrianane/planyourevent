@@ -53,6 +53,7 @@ class LocationsController extends Controller
             'city' => 'required',
             'zip' => 'required',
             'phone' => 'required',
+            'district' => 'required',
             'email' => 'required',
             'img.*' => 'image|nullable|max:1999'
         ]);

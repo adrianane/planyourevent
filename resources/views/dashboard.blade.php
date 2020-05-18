@@ -34,6 +34,17 @@
             @else
                 <p>You have no posts!</p>
             @endif
+
+            @if(count($locations) > 0)
+                <h2>Your locations:</h2>
+                @foreach($locations as $location)
+                    <li>
+                        {{$location->name}} <br/>
+                        {{$location->city}} <br/>
+                        created by {{$location->user->name}}
+                    </li>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

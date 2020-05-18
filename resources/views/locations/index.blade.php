@@ -26,7 +26,9 @@
         <h2>No location found!</h2>
     @endif
     <br />
-    <h1>
-        Click <a href="locations/create">here</a> to create your location.
-    </h1>
+    @if(Auth::user())
+        <h1>
+            Click <a href="locations/create">here</a> to create your location.
+        </h1>
+    @endif
 @endsection
