@@ -24,6 +24,8 @@ Route::get('/locations', 'PagesController@locations');
 //create routes automatically
 Route::resource('posts', 'PostsController');
 Route::resource('locations', 'LocationsController');
+//generate routes for hall
+Route::resource('halls', 'HallController');
 
 Auth::routes(['verify' => true]);
 

@@ -25,4 +25,11 @@ class Location extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    //create relation: a location/restaurant has many halls
+    //the auto foreign key is: modelname_primarykey -> location_id
+    public function halls()
+    {
+        return $this->hasMany('App\Hall');
+    }
 }
