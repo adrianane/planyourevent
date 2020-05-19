@@ -20,6 +20,7 @@
             </div>
             <a href="posts/create" class="btn btn-primary">Create post</a>
             <a href="locations/create" class="btn btn-primary">Add location</a>
+            <a href="halls/create" class="btn btn-primary">Add events hall</a>
             @if(count($posts) > 0)
                 <h2>Your posts:</h2>
                 <ul>

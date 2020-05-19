@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hall;
 use Illuminate\Http\Request;
 
 class HallController extends Controller
@@ -13,7 +14,12 @@ class HallController extends Controller
      */
     public function index()
     {
-        //
+        //get all my event halls
+        $current_user = auth()->user()->getAuthIdentifier();
+        //@TODO: get halls of current user (JOIN ?)
+        $halls = Hall::orderby('name','desc')->paginate(10);
+
+        return view('halls.index')->with('halls', $halls);
     }
 
     /**
@@ -23,7 +29,8 @@ class HallController extends Controller
      */
     public function create()
     {
-        //
+        return view('halls.create');
+
     }
 
     /**
@@ -34,7 +41,23 @@ class HallController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'seats' => 'required|integer',
+                'location_id' => 'required|integer',
+            ]
+        );
+        $hall = new Hall();
+        $hall->name = $request->name;
+        $hall->seats = $request->seats;
+        $hall->description = $request->description;
+        $hall->location_id = $request->location_id;
+
+        $hall->save();
+
+        return redirect('/halls')->with('Event hall added!');
     }
 
     /**
