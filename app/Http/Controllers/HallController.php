@@ -52,7 +52,7 @@ class HallController extends Controller
         );
         $hall = new Hall();
         $hall->name = $request->name;
-        $hall->seats = $request->seats;
+        $hall->max_seats = $request->max_seats;
         $hall->min_seats = $request->min_seats;
         $hall->description = $request->description;
         $hall->location_id = $request->location_id;
