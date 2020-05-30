@@ -8,7 +8,8 @@
         @foreach($halls as $hall)
             <li>
             <h2>{{$hall->name}}</h2>
-                <p>Nr of seats: {{$hall->seats}}</p>
+                <p>Min of seats: {{$hall->min_seats}}</p>
+                <p>Max of seats: {{$hall->max_seats}}</p>
                 <p>{{$hall->description}}</p>
             </li>
         @endforeach

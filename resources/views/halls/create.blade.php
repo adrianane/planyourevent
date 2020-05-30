@@ -11,8 +11,12 @@
                 <input type="text" name="name" class="form-control" value="{{old('name')}}"/>
             </div>
             <div class="form-group">
+                <label>Min. number of seats</label>
+                <input type="number" name="min_seats" class="form-control" value="{{old('min_seats')}}"/>
+            </div>
+            <div class="form-group">
                 <label>Max. number of seats</label>
-                <input type="number" name="seats" class="form-control" value="{{old('seats')}}"/>
+                <input type="number" name="max_seats" class="form-control" value="{{old('max_seats')}}"/>
             </div>
             <div class="form-group">
                 <label>Description</label>

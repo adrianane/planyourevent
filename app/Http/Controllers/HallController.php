@@ -45,13 +45,15 @@ class HallController extends Controller
             $request,
             [
                 'name' => 'required',
-                'seats' => 'required|integer',
+                'max_seats' => 'required|integer|min:10',
+                'min_seats' => 'required|integer|min:10',
                 'location_id' => 'required|integer',
             ]
         );
         $hall = new Hall();
         $hall->name = $request->name;
         $hall->seats = $request->seats;
+        $hall->min_seats = $request->min_seats;
         $hall->description = $request->description;
         $hall->location_id = $request->location_id;
 
