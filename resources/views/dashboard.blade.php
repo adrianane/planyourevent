@@ -46,6 +46,18 @@
                     </li>
                 @endforeach
             @endif
+            @if(count($halls) > 0)
+                <h2>Your halls:</h2>
+                @foreach($halls as $hall)
+                    <li>
+                        {{$hall->name}} <br/>
+                        {{$hall->max_seats}} <br/>
+                        {{$hall->min_seats}} <br/>
+                        {{$hall->description}} <br/>
+                        created by {{$hall->location->user->name}}
+                    </li>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

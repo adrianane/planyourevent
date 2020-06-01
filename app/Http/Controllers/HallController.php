@@ -14,9 +14,10 @@ class HallController extends Controller
      */
     public function index()
     {
-        //get all my event halls
-        $current_user = auth()->user()->getAuthIdentifier();
         //@TODO: get halls of current user (JOIN ?)
+        //$current_user = auth()->user()->getAuthIdentifier();
+
+        //get all my event halls
         $halls = Hall::orderby('name','desc')->paginate(10);
 
         return view('halls.index')->with('halls', $halls);
