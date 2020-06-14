@@ -52,7 +52,7 @@ class HallController extends Controller
                 'name' => 'required',
                 'max_seats' => 'required|integer|min:10',
                 'min_seats' => 'required|integer|min:10',
-                'location_id' => 'required|integer',
+                'location_id' => 'required|integer|min:0|not_in:0',
             ]
         );
         $hall = new Hall();
@@ -75,7 +75,9 @@ class HallController extends Controller
      */
     public function show($id)
     {
-        //
+        $hall = Hall::find($id);
+
+        return view('halls.show')->with('hall', $hall);
     }
 
     /**
@@ -86,7 +88,17 @@ class HallController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hall = Hall::find($id);
+        $user_id = auth()->user()->id;
+        $locations = Location::where('user_id', '=', $user_id)->get();
+
+        return view('halls.edit')->with(
+            [
+                'hall'=> $hall,
+                'locations'=> $locations
+            ]
+        );
+
     }
 
     /**
@@ -98,7 +110,28 @@ class HallController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'max_seats' => 'required|integer|min:10',
+                'min_seats' => 'required|integer|min:10',
+                'location_id' => 'required|integer|min:0|not_in:0',
+            ]
+        );
+
+        $hall = Hall::find($id);
+        $hall->name = $request->name;
+        $hall->description = $request->description;
+        $hall->min_seats = $request->min_seats;
+        $hall->max_seats = $request->max_seats;
+        $hall->location_id = $request->location_id;
+
+        $hall->save();
+
+
+        return redirect('/dashboard')->with('success', 'The hall was successfully edited!');
+
     }
 
     /**
@@ -109,6 +142,9 @@ class HallController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hall = Hall::find($id);
+        $hall->delete();
+
+        return redirect('/dashboard')->with('success', 'Hall deleted!');
     }
 }

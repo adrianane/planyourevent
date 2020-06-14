@@ -39,23 +39,39 @@
             @if(count($locations) > 0)
                 <h2>Your locations:</h2>
                 @foreach($locations as $location)
-                    <li>
-                        {{$location->name}} <br/>
-                        {{$location->city}} <br/>
-                        created by {{$location->user->name}}
-                    </li>
+                    <a href="locations/{{$location->id}}">
+                        <li>
+                            {{$location->name}} <br/>
+                            {{$location->city}} <br/>
+                            created by {{$location->user->name}}
+                            <a href="locations/{{$location->id}}/edit" class="btn">Edit</a>
+                            <form action="locations/{{$location->id}}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                {{csrf_field()}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </li>
+                    </a>
                 @endforeach
             @endif
             @if(count($halls) > 0)
                 <h2>Your halls:</h2>
                 @foreach($halls as $hall)
-                    <li>
-                        {{$hall->name}} <br/>
-                        {{$hall->max_seats}} <br/>
-                        {{$hall->min_seats}} <br/>
-                        {{$hall->description}} <br/>
-                        created by {{$hall->location->user->name}}
-                    </li>
+                    <a href="halls/{{$hall->id}}">
+                        <li>
+                            {{$hall->name}} <br/>
+                            {{$hall->max_seats}} <br/>
+                            {{$hall->min_seats}} <br/>
+                            {{$hall->description}} <br/>
+                            created by {{$hall->location->user->name}}
+                            <a href="halls/{{$hall->id}}/edit" class="btn">Edit</a>
+                            <form action="halls/{{$hall->id}}" method="post">
+                                <input type="hidden" name="_method" value="DELETE"/>
+                                {{csrf_field()}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </li>
+                    </a>
                 @endforeach
             @endif
         </div>
