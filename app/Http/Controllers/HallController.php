@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Hall;
 use Illuminate\Http\Request;
+use App\Location;
 
 class HallController extends Controller
 {
@@ -30,7 +31,10 @@ class HallController extends Controller
      */
     public function create()
     {
-        return view('halls.create');
+        $user_id = auth()->user()->id;
+        $locations = Location::where('user_id', '=', $user_id)->get();
+        //send locations to the view, so we can display them in the dropdown
+        return view('halls.create')->with('locations', $locations);
 
     }
 

@@ -22,14 +22,13 @@
                 <label>Description</label>
                 <input type="textarea" name="description" class="form-control" value="{{old('description')}}"/>
             </div>
-            {{-- @TODO: get options from DB(locations added by the current user)--}}
             <div class="form-group">
                 <label>Select your restaurant</label>
                 <select name="location_id" class="form-control" value="{{old('location_id')}}">
                     <option value="0">Please select a restaurant</option>
-                    <option value="1">Polaris</option>
-                    <option value="2">Sun Garten	</option>
-                    <option value="4">Adam's Events	</option>
+                    @foreach($locations as $loc)
+                        <option value="{{$loc->id}}">{{$loc->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
