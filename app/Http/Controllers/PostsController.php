@@ -13,6 +13,10 @@ class PostsController extends Controller
      */
     public function __construct()
     {
+        /* Restrict access to Posts if the user is not logged
+         * Exeptions are: pages for listing posts (index() method) and detail page of a post (show() method) can be
+         * reached without authentification
+         */
         $this->middleware(['auth', 'verified'], ['except' => ['index', 'show']]);
     }
 

@@ -8,6 +8,12 @@ use App\Location;
 
 class HallController extends Controller
 {
+    public function __construct()
+    {
+        //limit access to all actions, except index and show; the user has to be logged in for editing, deleting
+        $this->middleware(['auth', 'verified'], ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
